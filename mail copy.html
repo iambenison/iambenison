@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Input Combination</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>User Input Combination</h1>
+
+  <label for="input1">Email Address:</label>
+  <input type="text" id="input1">
+
+  <label for="input2">Region:</label>
+  <input type="text" id="input2">
+
+  <button onclick="combineInputs()">Combine Inputs</button>
+
+  <p id="output"></p>
+
+  <script>
+    function combineInputs() {
+      // Get user inputs
+      var input1 = document.getElementById("input1").value;
+      var input2 = document.getElementById("input2").value;
+
+      // Preset text
+      var presetText = "https://prod.cliologs-us.systems/_plugin/kibana/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-30d,to:now))&_a=(columns:!(message.eventType,headers.Subject,headers.From),filters:!(),index:a4d53b40-8849-11eb-b879-859d763fa73c,interval:auto,query:(language:kuery,query:'%22 ";
+	// Preset text
+      var presetText2 = "%22'),sort:!())";
+
+      // Combine inputs with preset text
+      var combinedText = presetText + input1 + presetText2;
+
+      // Create a link element
+      var link = document.createElement("a");
+      link.href = combinedText; // You can set this to a specific URL if needed
+      link.target = "_blank"; // Open in a new tab or window
+      link.textContent = "Click Here";
+
+      // Display the link
+      var outputContainer = document.getElementById("output");
+      outputContainer.innerHTML = ''; // Clear previous content
+      outputContainer.appendChild(link);
+    }
+  </script>
+
+</body>
+</html>
